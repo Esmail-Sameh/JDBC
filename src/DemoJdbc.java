@@ -1,5 +1,4 @@
 import java.sql.*;
-import java.util.Collection;
 
 public class DemoJdbc {
 
@@ -22,10 +21,16 @@ public class DemoJdbc {
         System.out.println("Connection established");
         Statement stmt = con.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
-        rs.next();
-        System.out.println("your name is: " + rs.getString("sname"));
+//        rs.next();
+//        System.out.println("your name is: " + rs.getString("sname"));
+        while (rs.next()){
+            System.out.print("id is: "+ rs.getString("sid") + " , ");
+            System.out.print("Name is: " + rs.getString("sname") + " , ");
+            System.out.println("Age is: " + rs.getString("sage") + " years old \n-------------------------------");
+        }
         con.close();
         System.out.println("Collection is closed");
+
 
 
     }
